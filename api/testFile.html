@@ -1,0 +1,297 @@
+
+
+  Получить все файлы по ID папки
+  /files/{id}:
+    get:
+      summary: Get files for {id} folder
+      description: |
+        Returns array of files information
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Files
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+
+  Получить файл по ID
+  /file/{id}/payload:
+    get:
+      summary: Get file
+      description: |
+        Returns file information
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+    <!-- upload file -->
+    post:
+      summary: Chreate a file
+      description: |
+        Creates a file in a folder {id}
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+    delete:
+      summary: Deletes the file
+      description: |
+        Deletes the file, the file is not really deleted it is just marked as deleted
+        it can be restored
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+      it('should upload a file', function (done) {
+            var fs = require('fs');
+
+            request.post({
+                url: baseURL + '/file/root',
+                formData: {
+                    hello: 'World',
+                    my_file: fs.createReadStream(__dirname + '/test.jpg')
+                }
+            }, function (err, httpResponse, body) {
+                assert.ifError(err);
+
+                console.log('BODY: ' + body);
+
+                assert(httpResponse.statusCode == 200, 'Was expecting success status code to be returned');
+
+                var resp = JSON.parse(body);
+                assert(Array.isArray(resp), 'Was expecting array to be returned');
+                assert(resp.length == 1, 'Was expecting exactly one element');
+                fileId = resp[0].id;
+                done();
+            });
+      });
+
+      it('should get file by id', function (done) {
+          request.get(baseURL + '/file/' + fileId, function (err, httpResponse, body) {
+              assert.ifError(err);
+
+              console.log('BODY: ' + body);
+
+              assert(httpResponse.statusCode == 200, 'Was expecting success status code to be returned');
+
+              var resp = JSON.parse(body);
+              assert(resp.name == 'test.jpg', 'Was expecting file name to be test.jpg');
+              assert(resp.mime == 'image/jpeg', 'Was expecting mime to be image/jpeg');
+              done();
+          });
+      });
+    
+
+
+  Очищает файл
+  /file/{id}/purge:
+    post:
+      summary: Purges a file
+      description: |
+        Purges a file or folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  Создание папки
+  /file/{id}/mkdir:
+    post:
+      summary: Creates folder
+      description: |
+        Creates a folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: File name
+          required: true
+          type: string
+        - name: type
+          in: formData
+          description: File type
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  Восстанавливает удаленные файлы
+  /file/{id}/restore:
+    post:
+      summary: Restores deleted file
+      description: |
+        Restores deleted file or folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  добавления файла в папку
+  /file/{id}/upload:
+    post:
+      summary: uploads file to a folder
+      description: |
+        Uploads file to a folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+
+  Крепления служба в папку
+  /file/{id}/mount/{service}:
+    post:
+      summary: Mounts servce to a folder
+      description: |
+        Uploads file to a folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+        - name: service
+          in: path
+          description: Service identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'

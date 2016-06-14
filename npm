@@ -1,0 +1,18 @@
+npm prun - удалить все чего нет в package.json
+
+npm update / up - добавить все что есть в package.json(так же держит все модули в актуальном сост)
+
+npm remove / r moduleName - удаление модуля
+
+npm init - генерация package.json
+
+npm adduser / addu - ???npm install -g npm@lts(gроблема была в старой версии)
+
+npm publish / pu - публикация модуля в центральной базе пакетов
+
+npm search / s - поиск модуля в цб
+
+npm install / i moduleName - установка модуля
+
+
+при установке пакета(модуля) - node.js идет в верх по иерархии директорий пока не найдет папку node modules / package.json => там и поставит

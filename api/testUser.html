@@ -1,0 +1,253 @@
+  /user/register:
+    post:
+      summary: Register user
+      description: |
+        Registers the user on the system
+      parameters:
+        - name: email
+          in: formData
+          description: Email address
+          required: true
+          type: string
+        - name: password
+          in: formData
+          description: Password of a user
+          required: true
+          type: string
+      tags:
+        - User
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /users:
+    get:
+      summary: Get all users
+      description: |
+        Returns array of files information
+#      parameters:
+#        - name: id
+#          in: path
+#          description: File identifier
+#          required: true
+#          type: string
+      tags:
+        - Users
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /user/roles:
+    get:
+      summary: Get all roles
+      description: |
+        Returns array of files information
+#      parameters:
+#        - name: id
+#          in: path
+#          description: File identifier
+#          required: true
+#          type: string
+      tags:
+        - Users
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  /user/role/{roleid}/permissions:
+    get:
+      summary: Get all permissions for a role
+      description: |
+        Returns array of files information
+      parameters:
+        - name: roleid
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Users
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /user/{id}:
+    get:
+      summary: Get user by id
+      description: |
+        Returns array of files information
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Files
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Updates user
+      description: |
+        Purges a file or folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Delets user
+      description: |
+        Deletes user
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /user/create:
+    post:
+      summary: Creates user
+      description: |
+        Creates a folder
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /user/{id}/role/{roleid}:
+    put:
+      summary: Adds role to user
+      description: |
+        Restores deleted file or folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+        - name: roleid
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Removes role from user
+      description: |
+        Restores deleted file or folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+        - name: roleid
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'

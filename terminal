@@ -1,0 +1,14 @@
+сделать sublime дефолтным, и др
+http://itman.in/ubuntu-ustanovka-sublime-text-2/#_Sublime_Text-2
+
+открыть папку
+xdg-open .
+
+открыть файл
+xdg-open fileName.js
+
+копировать из папки в другую только содержимое
+cp -Rnv ~/Downloads/* ~/Общедоступные/
+
+удалить папку и все ее содержимое
+rm -rf folderName

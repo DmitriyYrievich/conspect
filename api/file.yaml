@@ -1,0 +1,535 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: File service
+  description: Service that makes folders
+  version: "1.0.0"
+# the domain of the service
+host: api.cloudfiled.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /files/{id}:
+    get:
+      summary: Get files for {id} folder
+      description: |
+        Returns array of files information
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Files
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /file/{id}:
+    get:
+      summary: Get file
+      description: |
+        Returns file information
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a file
+      description: |
+        Creates a file in a filder {id}
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      summary: Update file information
+      description: |
+        Updates file file information
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: ID of updated file
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Deletes the file
+      description: |
+        Deletes the file, the file is not really deleted it is just marked as deleted
+        it can be restored
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /file/{id}/purge:
+    delete:
+      summary: Purges a file
+      description: |
+        Purges a file or folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /file/{id}/preview:
+    get:
+      summary: Returns a file preview
+      description: |
+        Returns a file preview
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /file/{id}/thumb:
+    get:
+      summary: Returns a file thumb or default image
+      description: |
+        Returns a file thumb or default image
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /file/{id}/payload:
+    get:
+      summary: Returns file payload
+      description: |
+        Returns file payload
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+====================================================================
+
+
+  /file/{id}/shares:
+    get:
+      summary: Returns shares for a file
+      description: |
+        Returns shares for a file
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+  /file/{id}/share/{share}:
+    post:
+      summary: Adds a share to a file
+      description: |
+        Returns file payload
+      parameters:
+        - name: idile identifier
+          required: true
+          type: string
+        - name: share
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Removes a share from a file
+      description: |
+        Removes a share from a file
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+        - name: share
+          in: path
+          description: File identifier
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+
+=================================================
+
+  /file/{id}/variant/{var}:
+    get:
+      summary: Returns the cropped thumbnail
+      description: |
+        Returns file payload
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+        - name: var
+          in: path
+          description: Variant name
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+
+
+#  /file/{from}/mv/{to}:
+#    put:
+#      summary: moves and updates a file
+#      description: |
+#        moves and updates a file
+#      parameters:
+#        - name: from
+#          in: path
+#          description: File identifier
+#          required: true
+#          type: string
+#        - name: to
+#          in: path
+#          description: File identifier
+#          required: true
+#          type: string
+#      tags:
+#        - Folios
+#      responses:
+#        200:
+#          description: An array of files
+#          schema:
+#            type: array
+#            items:
+#              $ref: '#/definitions/Product'
+#        default:
+#          description: Unexpected error
+#          schema:
+#            $ref: '#/definitions/Error'
+
+
+
+  /file/{id}/mkdir:
+    post:
+      summary: Creates folder
+      description: |
+        Creates a folder
+      parameters:
+        - name: id
+          in: path
+          description: File identifier
+          required: true
+          type: string
+        - name: name
+          in: formData
+          description: File name
+          required: true
+          type: string
+        - name: type
+          in: formData
+          description: File type
+          required: true
+          type: string
+      tags:
+        - Folios
+      responses:
+        200:
+          description: An array of files
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+
+
+
+
+#  /file/{id}/restore:
+#    post:
+#      summary: Restores deleted file
+#      description: |
+#        Restores deleted file or folder
+#      parameters:
+#        - name: id
+#          in: path
+#          description: File identifier
+#          required: true
+#          type: string
+#      tags:
+#        - Folios
+#      responses:
+#        200:
+#          description: An array of files
+#          schema:
+#            type: array
+#            items:
+#              $ref: '#/definitions/Product'
+#        default:
+#          description: Unexpected error
+#          schema:
+#            $ref: '#/definitions/Error'
+
+
+
+
+#  /file/{id}/upload:
+#    post:
+#      summary: uploads file to a folder
+#      description: |
+#        Uploads file to a folder
+#      parameters:
+#        - name: id
+#          in: path
+#          description: File identifier
+#          required: true
+#          type: string
+#      tags:
+#        - Folios
+#      responses:
+#        200:
+#          description: An array of files
+#          schema:
+#            type: array
+#            items:
+#              $ref: '#/definitions/Product'
+#        default:
+#          description: Unexpected error
+#          schema:
+#            $ref: '#/definitions/Error'
+
+#  /file/{id}/mount/{service}:
+#    post:
+#      summary: Mounts servce to a folder
+#      description: |
+#        Uploads file to a folder
+#      parameters:
+#        - name: id
+#          in: path
+#          description: File identifier
+#          required: true
+#          type: string
+#        - name: service
+#          in: path
+#          description: Service identifier
+#          required: true
+#          type: string
+#      tags:
+#        - Folios
+#      responses:
+#        200:
+#          description: An array of files
+#          schema:
+#            type: array
+#            items:
+#              $ref: '#/definitions/Product'
+#        default:
+#          description: Unexpected error
+#          schema:
+#            $ref: '#/definitions/Error'
+definitions:
+  Product:
+    properties:
+      product_id:
+        type: string
+        description: Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles.
+      description:
+        type: string
+        description: Description of product.
+      display_name:
+        type: string
+        description: Display name of product.
+      capacity:
+        type: string
+        description: Capacity of product. For example, 4 people.
+      image:
+        type: string
+        description: Image URL representing the product.
+  Error:
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
+          in: path
+          description: F

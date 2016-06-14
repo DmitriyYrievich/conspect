@@ -1,0 +1,36 @@
+SERVICE
+
+*роутинг - $routeParams/$stateParams, routeParams, routeProvider
+
+*resolve(modal, ctrl, run, config)
+
+*Provider - https://habrahabr.ru/post/221733/
+
+*injector(invoke...)
+
+*q
+
+*interseptors
+
+*геттер/сеттер
+
+*cookie
+
+*кэш
+
+*localstorage
+
+*всплытия и перехват
+
+
+DIRECTIVE 
+
+*compile(pre, post)
+
+
+=========
+
+
+$compile, $$parent, $pharse, 
+$eval — выполнение кода в контексте scope, разбор и немедленное выполнение выражения/function(). Она принимает функцию в качестве аргумента, и единственное, что делает — это сразу же ее вызывает, передавая ей текущий scope, как параметр. Ну а потом она возвращает результат выполнения. $eval также принимает второй параметр, который она без изменений передает в вызываемую функцию. НЕ ВЫЗЫВАЕТ DIGEST!!!
+

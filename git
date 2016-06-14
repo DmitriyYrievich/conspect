@@ -1,0 +1,28 @@
+git init
+git status
+git add .
+git commit -m "comment" - сделатб слепок
+
+git remote add origin https://github.com/DmitriyYrievich/learnAngular2.git - добавить удаленный репозиторий(сокращение, урл)
+
+git push -u origin777 master - добавить(push) к текущему репозиторию новую версию
+
+git fetch origin777 - извлечь (fetch) всю информацию, которая есть в репозитории Павла, но нет в вашем
+
+cd folderName
+git remote -v - покажет все удаленные репозиории в етой директории
+
+git pull - извлекает (fetch) данные с сервера, с которого вы изначально склонировали, и автоматически пытается слить (merge) их с кодом, над которым вы в данный момент работаете.
+
+git push [удал. сервер] [ветка] - Эта команда срабатывает только в случае, если вы клонировали с сервера, на котором у вас есть права на запись, и если никто другой с тех пор не выполнял команду push. 
+
+git remote rm paul - удаление удаленной ветки
+
+git remote rename pb paul - переименование удаленной ветки
+
+// ветки
+
+git branch nameBranch - create new branch
+git checkout nameBranch - go to nameBranch
+git branch - статус веток
+git  merge mergeName - слияние ветки указанной в текущюю
