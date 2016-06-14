@@ -26,3 +26,4 @@ git branch nameBranch - create new branch
 git checkout nameBranch - go to nameBranch
 git branch - статус веток
 git  merge mergeName - слияние ветки указанной в текущюю
+//last
