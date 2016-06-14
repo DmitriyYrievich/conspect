@@ -2,6 +2,7 @@ git init
 git status
 git add .
 git commit -m "comment" - сделатб слепок
+1928gbiu
 
 git remote add origin https://github.com/DmitriyYrievich/learnAngular2.git - добавить удаленный репозиторий(сокращение, урл)
 
@@ -9,7 +10,6 @@ git push -u origin777 master - добавить(push) к текущему реп
 
 git fetch origin777 - извлечь (fetch) всю информацию, которая есть в репозитории Павла, но нет в вашем
 
-cd folderName
 git remote -v - покажет все удаленные репозиории в етой директории
 
 git pull - извлекает (fetch) данные с сервера, с которого вы изначально склонировали, и автоматически пытается слить (merge) их с кодом, над которым вы в данный момент работаете.
