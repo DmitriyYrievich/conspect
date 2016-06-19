@@ -1,4 +1,4 @@
-git init
+git init 666
 git status
 git add .
 git commit -m "comment" - сделатб слепок
