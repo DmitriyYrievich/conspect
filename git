@@ -2,7 +2,7 @@ git init 777
 git status
 git add .
 git commit -m "comment" - сделатб слепок
-1928gbiudddd
+1928gbiu
 
 git remote add origin https://github.com/DmitriyYrievich/learnAngular2.git - добавить удаленный репозиторий(сокращение, урл)
 
