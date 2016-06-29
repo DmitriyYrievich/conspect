@@ -1,8 +1,8 @@
-git init 777
+git init
 git status
 git add .
 git commit -m "comment" - сделатб слепок
-1928gbiudddd
+1928gbiu
 
 git remote add origin https://github.com/DmitriyYrievich/learnAngular2.git - добавить удаленный репозиторий(сокращение, урл)
 
@@ -26,4 +26,4 @@ git branch nameBranch - create new branch
 git checkout nameBranch - go to nameBranch
 git branch - статус веток
 git  merge mergeName - слияние ветки указанной в текущюю
-//last
+

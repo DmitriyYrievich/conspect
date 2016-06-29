@@ -15,3 +15,6 @@ rm -rf folderName
 
 переместить файл/папку
 mv ~/Desktop/index.html ~/workNote/learnReactJS/
+
+переименновать файл
+mv имя-файла1 имя-файла2
